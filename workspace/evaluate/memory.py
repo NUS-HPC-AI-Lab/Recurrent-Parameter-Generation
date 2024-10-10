@@ -1,18 +1,22 @@
 import sys, os
-sys.path.append("/home/wangkai/arpgen/AR-Param-Generation")
-os.chdir("/home/wangkai/arpgen/AR-Param-Generation")
+root = os.sep + os.sep.join(__file__.split(os.sep)[1:__file__.split(os.sep).index("Recurrent-Parameter-Generation")+1])
+sys.path.append(root)
+os.chdir(root)
 
 # torch
 import torch
 # father
-from workspace.main import vittiny_8192 as item
+import importlib
+item = importlib.import_module(f"{sys.argv[1]}")
 Dataset = item.Dataset
 train_loader = item.train_loader
 optimizer = item.optimizer
 train_set = item.train_set
 config = item.config
 model = item.model
-config["tag"] = config.get("tag") if config.get("tag") is not None else os.path.basename(item.__file__)[:-3]
+assert config.get("tag") is not None, "Remember to set a tag."
+
+
 
 
 test_config = {
@@ -47,7 +51,9 @@ def memory_test():
         if batch_idx >= 10:
             break
     os.system("nvidia-smi")
-    input(f"This program running on: {os.environ['CUDA_VISIBLE_DEVICES']}")
+    input(f"This program running on GPU:{os.environ['CUDA_VISIBLE_DEVICES']}")
+
+
 
 
 if __name__ == "__main__":

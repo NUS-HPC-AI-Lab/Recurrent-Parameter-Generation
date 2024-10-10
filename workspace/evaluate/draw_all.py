@@ -1,31 +1,35 @@
-import random
 import sys, os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
-os.chdir(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+root = os.sep + os.sep.join(__file__.split(os.sep)[1:__file__.split(os.sep).index("Recurrent-Parameter-Generation")+1])
+sys.path.append(root)
+os.chdir(root)
 
+import random
 import pandas as pd
 import numpy as np
 import torch
 import pickle
-# import dataset.imagenet_vitbase.train as item
 import importlib
 item = importlib.import_module(f"dataset.{sys.argv[1]}.train")
 loader = item.test_loader
 model = item.model
 test = item.test
-
-
-
-
+# tag in this file is only the name of specific dirname instead of config["tag"]
 tag = os.path.basename(os.path.dirname(item.__file__))
-checkpoint_path = f"./dataset/{tag}/checkpoint"
-generated_path = f"./dataset/{tag}/generated"
-cache_file = None
-resume = True
-try:
-    exec(sys.argv[2])
-except IndexError:
-    pass
+
+
+
+
+config = {
+    "checkpoint_path": f"./dataset/{tag}/checkpoint",
+    "generated_path": f"./dataset/{tag}/generated",
+    "cache_file": None,  # None means default dataset/tag/cache.pt
+    "resume": True,  # if you updated the checkpoint and generated models, use "resume": False.
+    "noise_intensity": [0.1, 0.01, 0.001],
+    "total_noised_number": 9,
+}
+assert config["total_noised_number"] % len(config["noise_intensity"]) == 0, \
+    "total_noised_number must be a multiple of noise_intensity"
+globals().update(config)
 
 
 
@@ -39,18 +43,7 @@ num_checkpoint = len(checkpoint_items)
 num_generated = len(generated_items)
 
 
-
-
-if "noise_intensity" not in globals():
-    noise_intensity = [0.1, 0.01, 0.001]
-    print(f"set noise_intensity to {noise_intensity}")
-if "total_noised_number" not in globals():
-    total_noised_number = len(checkpoint_items)
-    print(f"set total_noised_number to {total_noised_number}")
-
-
-
-
+# define compute IoU
 @torch.no_grad()
 def compute_wrong_indices(diction):
     model.load_state_dict(diction, strict=False)
@@ -64,6 +57,7 @@ def compute_wrong_iou(a, b):
     union = np.logical_or(a, b)
     iou = np.sum(inter) / np.sum(union)
     return iou
+
 
 # prepare evaluate
 print("\n==> start evaluating..")
@@ -86,6 +80,7 @@ else:  # compute checkpoint and generated
         total_acc_list.append(acc)
     with open(cache_file, "wb") as f:
         pickle.dump([total_result_list, total_acc_list], f)
+
 
 # compute noised
 checkpoint_items_for_noise = checkpoint_items.copy()
@@ -124,8 +119,6 @@ for this_noise_intensity in noise_intensity:
     bias += num_each_noised
 
 
-
-
 # compute iou_metrix
 print("start computing IoU...")
 total_num = num_checkpoint + num_generated + num_each_noised * num_noise_class
@@ -137,12 +130,11 @@ for i in range(total_num):
         iou = compute_wrong_iou(total_result_list[i], total_result_list[j])
         iou_matrix[i, j] = iou
 
+
 # save result
 df = pd.DataFrame(iou_matrix)
-df.to_excel(f"./similarity_{tag}.xlsx", index=False)
-print(f"finished Saving ./similarity_{tag}.xlsx!")
-
-
+df.to_excel(f"./iou_{tag}.xlsx", index=False)
+print(f"finished Saving ./iou_{tag}.xlsx!")
 
 
 # print summary
@@ -177,6 +169,7 @@ origin_generated_max = iou_matrix[num_checkpoint:num_checkpoint + num_generated,
 origin_generated_max = np.amax(origin_generated_max, axis=-1)
 print("origin-generated(max):", origin_generated_max.mean())
 
+
 # print noised
 noised_max_list = []
 this_start = num_checkpoint + num_generated
@@ -195,8 +188,7 @@ for this_noise_intensity in noise_intensity:
     this_start += num_each_noised
 
 
-
-
+# save summary
 summary = {
     "summary": tag,
     "num_checkpoint": num_checkpoint,
@@ -232,8 +224,6 @@ for i, this_noise_intensity in enumerate(noise_intensity):
     this_start += num_each_noised
 # draw
 plt.savefig(f'plot_{tag}.png')
-print(f"plot saved to plot_{tag}.png")
 with open(f'plot_{tag}.cache', "wb") as f:
     pickle.dump(draw_cache, f)
-
-
+print(f"plot saved to plot_{tag}.png")

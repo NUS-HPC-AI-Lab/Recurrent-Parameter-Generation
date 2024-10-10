@@ -81,7 +81,7 @@ class DDPMSampler(nn.Module):
         return x_t_minus_one
 
     @torch.no_grad()
-    def forward(self, x_t, c, only_return_x_0=True, interval=1):
+    def forward(self, x_t, c, only_return_x_0=True, interval=1, **kwargs):
         x = [x_t]
         for time_step in reversed(range(self.T)):
             x_t = self.sample_one_step(x_t, time_step, c)
@@ -122,7 +122,7 @@ class DDIMSampler(nn.Module):
         return x_t_minus_one
 
     @torch.no_grad()
-    def forward(self, x_t, c, steps=60, method="linear", eta=0.05, only_return_x_0=True, interval=1):
+    def forward(self, x_t, c, steps=60, method="linear", eta=0.05, only_return_x_0=True, interval=1, **kwargs):
         if steps == 0:
             return c
         if method == "linear":
