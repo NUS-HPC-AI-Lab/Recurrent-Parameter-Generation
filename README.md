@@ -1,5 +1,4 @@
 # Recurrent Parameter Generation
-The official repository of paper [Recurrent Diffusion for Large-Scale Parameter Generation]().
 
 
 ##  Introduction
@@ -24,7 +23,7 @@ indicating that recurrent diffusion greatly enhances the practicality of paramet
 
 
 
-## Acknowledgment
+## <p style="text-align: center;">Acknowledgment</p>
 We thank 
 [Zhiyuan Liang](), 
 [Zhuang Liu](), 
@@ -37,8 +36,7 @@ This research is supported by the National Research Foundation, Singapore under 
 
 
 
-<center>## Citation</center>
-
+## <p style="text-align: center;">Citation</p>
 If you found our work useful, please consider citing us.
 
 ```
@@ -51,4 +49,3 @@ If you found our work useful, please consider citing us.
       primaryClass={}
 }
 ```
-
