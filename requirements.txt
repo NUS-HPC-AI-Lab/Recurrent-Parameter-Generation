@@ -1,6 +1,0 @@
-timm
-wandb
-einops
-seaborn
-openpyxl
-bitsandbytes
