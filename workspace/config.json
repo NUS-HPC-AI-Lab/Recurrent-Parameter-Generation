@@ -1,1 +1,1 @@
-{"use_wandb": true, "wandb_api_key": "your_wandb_key", "test_gpu_ids": "0"}
+{"use_wandb": false, "wandb_api_key": "your_wandb_key", "test_gpu_ids": "0"}

@@ -1,7 +1,19 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer
+import os
 
 
-model_name = "/home/wangkai/Recurrent-Parameter-Generation/workspace/classinput/Qwen25llm"
+model_name = os.path.join(os.path.dirname(__file__), "Qwen25llm")
+
+
+print("Downloading Qwen2.5 files...")
+from huggingface_hub import snapshot_download
+snapshot_download(repo_id="Qwen2.5-3B-Instruct",
+                  repo_type="model",
+                  cache_dir=model_name,
+                  local_dir_use_symlinks=False,
+                  resume_download=True)
+
+
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
     torch_dtype="auto",

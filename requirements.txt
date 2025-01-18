@@ -4,3 +4,6 @@ einops
 seaborn
 openpyxl
 bitsandbytes
+transformers
+accelerate
+bypy
