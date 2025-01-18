@@ -56,13 +56,7 @@ pip install -r requirements.txt
 
 
 ## Quick Start
-1. Modify your config file.
-```shell
-# Set up your configs interactively.
-python ./workspace/set_configs.py
-```
-
-2. Try to generate with RPG model.
+Try to generate with RPG model.
 ```shell
 cd ./workspace
 CUDA_VISIBLE_DEVICES=0 sh launch.sh
