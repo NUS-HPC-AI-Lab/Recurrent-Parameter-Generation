@@ -15,6 +15,7 @@ train_set.set_infinite_dataset(max_num=train_set.real_length)
 print("num_generated:", test_set.real_length)
 config = item.config
 model = item.model
+model.config["diffusion_batch"] = 128
 assert config.get("tag") is not None, "Remember to set a tag."
 
 

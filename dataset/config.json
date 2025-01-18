@@ -1,1 +1,1 @@
-{"dataset_root": "path_to_your_dataset", "imagenet_root": {"train": null, "test": null}, "dora_root": "/home/wangkai/arpgen/DoRA/commonsense_reasoning", "dora_env_name": "dora_llama"}
+{"dataset_root": "dataset/dataset", "imagenet_root": {"train": null, "test": null}, "dora_root": null, "dora_env_name": "dora_llama"}
