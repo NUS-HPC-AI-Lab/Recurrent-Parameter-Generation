@@ -5,14 +5,7 @@ import os
 model_name = os.path.join(os.path.dirname(__file__), "Qwen25llm")
 
 
-print("Downloading Qwen2.5 files...")
-from huggingface_hub import snapshot_download
-snapshot_download(repo_id="Qwen/Qwen2.5-3B-Instruct",
-                  cache_dir=model_name,
-                  local_dir_use_symlinks=False,
-                  resume_download=True)
-
-
+print("Loading Qwen2.5 files...")
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
     torch_dtype="auto",
