@@ -59,8 +59,8 @@ pip install -r requirements.txt
 Try to generate with RPG model.
 ```shell
 cd ./workspace
-CUDA_VISIBLE_DEVICES=0 sh launch.sh
-# CUDA_VISIBLE_DEVICES=<GPU_index> python ./classinput/launch.py
+CUDA_VISIBLE_DEVICES=0 sh demo.sh
+# CUDA_VISIBLE_DEVICES=<GPU_index> sh demo.sh
 ```
 
 You can get more information from [Github](https://github.com/NUS-HPC-AI-Lab/Recurrent-Parameter-Generation).
