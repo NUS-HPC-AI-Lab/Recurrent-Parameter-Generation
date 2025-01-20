@@ -98,25 +98,4 @@ expected_class: [0,0,0,0,0,0,0,0,1,0]  # ship
 description: "Select all animals that are both pets and can climb"
 expected_class: [0,0,0,1,0,1,0,0,0,0]  # cat, dog
 ```
-You can get more information from [Github](https://github.com/NUS-HPC-AI-Lab/Recurrent-Parameter-Generation).
-
-
-
-
-## Acknowledgment
-We thank 
-[Zhiyuan Liang](https://jerryliang24.github.io/), 
-[Zhuang Liu](https://liuzhuang13.github.io/), 
-[Gongfan Fang](https://fangggf.github.io/), 
-[Zangwei Zheng](https://zhengzangw.github.io/), 
-[Tianlong Chen](https://tianlong-chen.github.io/), 
-and [Zhangyang Wang](https://www.ece.utexas.edu/people/faculty/atlas-wang) 
-for valuable discussions and feedbacks. 
-This research is supported by the National Research Foundation, 
-Singapore under its AI Singapore Programme 
-(AISG Award No: AISG2-PhD-2021-08-008).
-
-
-## Citation
-coming soon...
-
+You can get more information from [Huggingface](https://huggingface.co/MTDoven/Recurrent-Parameter-Generation).
