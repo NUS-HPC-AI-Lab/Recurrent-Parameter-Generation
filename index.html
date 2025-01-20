@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="DESCRIPTION META TAG">
+  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
+  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
+  <meta property="og:url" content="URL OF THE WEBSITE"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recurrent Parameter Generation</title>
+  <link rel="icon" type="image/x-icon" href="static/images/hpcailab_logo.jpeg">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Recurrent Diffusion for Large-Scale Parameter Generation</h1>
+          <div class="is-size-5 publication-authors">
+            <!-- Paper authors -->
+            <span class="author-block">
+              <a href="https://kaiwang960112.github.io/" target="_blank">Kai Wang</a><sup>*</sup>, </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=9lKm_5IAAAAJ" target="_blank">Dongwen Tang</a><sup>*</sup>,  </span>
+            <span class="author-block">
+              <a href="https://wangbo-zhao.github.io/" target="_blank">Wangbo Zhao</a>,  </span>
+            <span class="author-block">
+              <a href="https://www.comp.nus.edu.sg/~youy/" target="_blank">Yang You</a>  </span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://www.nus.edu.sg/" target="_blank">National University of Singapore</a>  </span>
+            <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small>  </span>
+          </div>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- Arxiv PDF link -->
+              <span class="link-block">
+                <a href="https://arxiv.org" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Github link -->
+              <span class="link-block">
+                <a href="https://github.com/NUS-HPC-AI-Lab/Recurrent-Parameter-Generation" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <!-- Twitter link -->
+              <span class="link-block">
+                <a href="https://twitter.com" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-twitter"></i>
+                  </span>
+                  <span>Twitter</span>
+                </a>
+              </span>
+              <!-- Huggingface Link -->
+              <span class="link-block">
+                <a href="https://huggingface.co/" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" style=height:23px;width:auto;">
+                  </span>
+                  <span>Huggingface</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Parameter generation has long struggled to scale, significantly limiting its applications.
+            In this study, we introduce <b>R</b>ecurrent diffusion for large-scale <b>P</b>arameter <b>G</b>eneration, or <b>RPG</b>,
+            which models large-scale parameter generation through a recurrent diffusion process.
+            We divide the trained parameters into non-overlapping parts and propose a recurrent model to learn their relationships.
+            The outputs of this recurrent model, serving as conditions, are then input into a diffusion model to generate neural network parameters.
+            Utilizing only a single GPU, our method can generate parameters for popular vision and language models,
+            such as ConvNeXt-L and LoRA parameters for LLaMA-7B. Across various architectures and tasks,
+            the generated parameters consistently achieve comparable performance to those of trained networks.
+            Additionally, our approach demonstrates potential in generating models capable of handling unseen tasks,
+            indicating that recurrent diffusion greatly enhances the practicality of parameter generation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+
+<!-- Paper trade off -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">The number of generated parameters is too small</h2>
+        
+        <!-- Image container with caption -->
+        <div class="image-container" style="margin-top: 2rem; margin-bottom: 2rem;">
+          <img src="figures/roadmap.png" alt="Partial roadmap of vision, language, and parameter generation models" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+          <p class="caption" style="margin-top: 1rem; font-size: 0.9em; color: #666; text-align: center;">
+            <strong>Figure 1:</strong> Partial roadmap of vision, language, and parameter generation models. Parameter number in vision or language models is at least 10<sup>4</sup> times larger than that of generated parameters.
+          </p>
+        </div>
+
+        <div class="content has-text-justified">
+          <p>
+            Looking back on the journey of deep learning, the scaling up of neural networks is one of the most important keys to its remarkable success across various tasks.
+            In contrast, parameter generation, from HyperNetwork to recent diffusion-based methods, has struggled to scale up effectively, limiting its practical applications.
+            As shown in Figure 1, the scale gap between vision (or language) models and the generated parameters is at least <b>10<sup>4</sup></b>, posing significant challenges for this field.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End motivation -->
+
+
+  <!-- Paper motivation -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Previous works hardly make trade-off between scalability and performance</h2>
+        
+        <!-- Image container with caption -->
+        <div class="image-container" style="margin-top: 2rem; margin-bottom: 2rem;">
+          <img src="figures/pdiff.png" alt="pdiff pipeline" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+          <p class="caption" style="margin-top: 1rem; font-size: 0.9em; color: #666; text-align: center;">
+            <strong>Figure 2:</strong> P-diff usually confronts out-of-memory issues when scaling up.
+          </p>
+        </div>
+
+        <div class="image-container" style="margin-top: 2rem; margin-bottom: 2rem;">
+          <img src="figures/sane.png" alt="sane pipeline" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+          <p class="caption" style="margin-top: 1rem; font-size: 0.9em; color: #666; text-align: center;">
+            <strong>Figure 3:</strong> SANE individually generates parameter parts, which leads to poor performance of the generated parameters.
+          </p>
+        </div>
+
+        <div class="content has-text-justified">
+          <p>
+            There exists a fundamental trade-off between scale and performance in parameter generation, which significantly limits its practical applications. 
+            Specifically, P-diff flattens parameters into one-dimensional vectors, leading to out-of-memory issues when scaling up. 
+            Meanwhile, SANE generates local parameters independently, neglecting the modeling of relationships between these local parameters, 
+            which results in poor performance, especially when generating large-scale parameters.
+
+            Large Language Models (LLMs) have demonstrated exceptional capabilities in context modeling. 
+            They efficiently handle the trade-off between memory consumption and sequence length. 
+            Can we treat network parameters as textual data?
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End trade off -->
+
+
+
+
+<!-- Paper method -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Tokenization + Recurrent diffusion, a way for large-scale parameter generation</h2>
+        
+        <!-- Image container with caption -->
+        <div class="image-container" style="margin-top: 2rem; margin-bottom: 2rem;">
+          <img src="figures/pipeline.png" alt="pipeline of rpg" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+          <p class="caption" style="margin-top: 1rem; font-size: 0.9em; color: #666; text-align: center;">
+            <strong>Figure 4:</strong> Our approach comprises two key components: parameter tokenization and recurrent diffusion.
+            In the figure above, we show the inference process of recurrent diffusion.
+            The permutation state and position embedding are fed into the recurrent model.
+            Then, the outputs of the recurrent model serve as conditions for the diffusion process,
+            which generates the entire neural network parameters.
+          </p>
+        </div>
+
+        <div class="content has-text-justified">
+          <p>
+            coming soon
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End method -->
+
+
+<!-- plot -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Efficiency of RPG</h2>
+        
+        <!-- Image container with caption -->
+        <div class="image-container" style="margin-top: 2rem; margin-bottom: 2rem;">
+          <img src="figures/compare_training.png" alt="pipeline of rpg" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+          <p class="caption" style="margin-top: 1rem; font-size: 0.9em; color: #666; text-align: center;">
+            <strong>Figure 5:</strong> RPG can generate the complete parameters for ViT-Base and ConvNeXt-L within several minutes, achieving results comparable to the original models. Additionally, our approach can be run on various NVIDIA GPUs.
+          </p>
+        </div>
+
+        <div class="content has-text-justified">
+          <p>
+            coming soon
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End plot -->
+
+
+
+
+
+<!-- Paper build unseen -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Evaluating RPG in unseen tasks</h2>
+        
+        <!-- Image container with caption -->
+        <div class="image-container" style="margin-top: 2rem; margin-bottom: 2rem;">
+          <img src="figures/unseen.png" alt="pipeline of rpg" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+          <p class="caption" style="margin-top: 1rem; font-size: 0.9em; color: #666; text-align: center;">
+            <strong>Figure 5:</strong> An illustration of our binary embedding strategy and dataset construction. Left: binary embeddings (1022 in total) encode different CIFAR-10 classification tasks, where 1s indicate classes to be classified together (e.g., 'ship' and 'truck' in the first example). 
+            Right: the dataset consists of parameter-encoding pairs, formed by network parameters with their corresponding binary embeddings. 
+            These pairs are split into non-overlapping training and validation sets.
+          </p>
+        </div>
+
+        <div class="content has-text-justified">
+          <p>
+            coming soon
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End build unseen -->
+
+
+<!-- Paper unseen tasks -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Results in unseen tasks</h2>
+        
+        <!-- Image container with caption -->
+        <div class="image-container" style="margin-top: 2rem; margin-bottom: 2rem;">
+          <img src="figures/unseen_results.png" alt="pipeline of rpg" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+          <p class="caption" style="margin-top: 1rem; font-size: 0.9em; color: #666; text-align: center;">
+            <strong>Figure 6:</strong> coming soon
+          </p>
+        </div>
+
+        <div class="content has-text-justified">
+          <p>
+            coming soon
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End method -->
+
+
+
+
+<!-- Paper unseen tasks -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Text-Driven Parameter Generation</h2>
+        
+        <!-- Image container with caption -->
+        <div class="image-container" style="margin-top: 2rem; margin-bottom: 2rem;">
+          <img src="figures/example.png" alt="pipeline of rpg" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+          <p class="caption" style="margin-top: 1rem; font-size: 0.9em; color: #666; text-align: center;">
+            <strong>Figure 6:</strong> coming soon
+          </p>
+        </div>
+
+        <div class="content has-text-justified">
+          <p>
+            coming soon
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End method -->
+
+
+
+<!--BibTex citation -->
+<section class="section" id="BibTeX">
+
+  <div class="container is-max-desktop content">
+    <h2 class="title">Acknowledgments</h2>
+      We thank
+      <a href="https://jerryliang24.github.io/" target="_blank">Zhiyuan Liang</a>,
+      <a href="https://liuzhuang13.github.io/" target="_blank">Zhuang Liu</a>,
+      <a href="https://fangggf.github.io/" target="_blank">Gongfan Fang</a>,
+      <a href="https://zhengzangw.github.io/" target="_blank">Zangwei Zheng</a>,
+      <a href="https://tianlong-chen.github.io/" target="_blank">Tianlong Chen</a>,
+      <a href="https://www.ece.utexas.edu/people/faculty/atlas-wang" target="_blank">Zhangyang Wang</a>,
+      for valuable discussions and feedbacks.
+      This research is supported by the National Research Foundation,
+      Singapore under its AI Singapore Programme (AISG Award No: AISG2-PhD-2021-08-008).
+  </div>
+
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>BibTex Code Here</code></pre>
+  </div>
+
+</section>
+<!--End BibTex citation -->
+
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Please feel free to contact us via email at <a href="https://kaiwang960112.github.io/" target="_blank">Kai Wang</a>
+            or <a href="https://scholar.google.com/citations?user=9lKm_5IAAAAJ" target="_blank">Dongwen Tang</a> for any inquiries or assistance.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>
