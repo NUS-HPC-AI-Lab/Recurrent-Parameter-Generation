@@ -18,11 +18,7 @@ while True:
     print("\n\n\n==================================================================================")
     print('class includes: ("airplane", "automobile", "bird", "cat", "deer", "dog", "frog", "horse", "ship", "truck")')
     text_emb = input("Input your description: ") or "Give me a model to select all living things."
-    real_emb = input("Input your expected class (only for evaluating): ") or "[0,0,1,1,1,1,1,1,0,0]"
     # text_emb = "Give me a model to select all living things."
-    # real_emb = "[0,0,1,1,1,1,1,1,0,0]"
-
     emb = get_embedding(prompt=text_emb)
     emb = torch.tensor(emb, dtype=torch.float)
-    real_emb = torch.tensor(eval(real_emb), dtype=torch.float)
-    params = generate(save_path=save_name, embedding=emb, real_embedding=real_emb)
+    params = generate(save_path=save_name, embedding=emb)
