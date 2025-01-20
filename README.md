@@ -1,19 +1,4 @@
 # Recurrent Parameter Generation
-### [Paper]() | [Project Page](https://NUS-HPC-AI-Lab.github.io/Recurrent-Parameter-Generation/) | [Huggingface](https://huggingface.co/MTDoven/Recurrent-Parameter-Generation)
-
-
-## Abstract
-Parameter generation has long struggled to scale, significantly limiting its applications. 
-In this study, we introduce **R**ecurrent diffusion for large-scale **P**arameter **G**eneration, or **RPG**, 
-which models large-scale parameter generation through a recurrent diffusion process. 
-We divide the trained parameters into non-overlapping parts and propose a recurrent model to learn their relationships. 
-The outputs of this recurrent model, serving as conditions, are then input into a diffusion model to generate neural network parameters. 
-Utilizing only a single GPU, our method can generate parameters for popular vision and language models, such as ConvNeXt-L and LoRA parameters for LLaMA-7B. 
-Across various architectures and tasks, the generated parameters consistently achieve comparable performance to those of trained networks. 
-Additionally, our approach demonstrates potential in generating models capable of handling unseen tasks, 
-indicating that recurrent diffusion greatly enhances the practicality of parameter generation.
-
-
 
 
 
