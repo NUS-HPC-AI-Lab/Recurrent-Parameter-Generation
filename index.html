@@ -50,9 +50,9 @@
           <div class="is-size-5 publication-authors">
             <!-- Paper authors -->
             <span class="author-block">
-              <a href="https://kaiwang960112.github.io/" target="_blank">Kai Wang</a><sup>*</sup>, </span>
+              <a href="https://kaiwang960112.github.io/" target="_blank">Kai Wang</a>, </span>
             <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=9lKm_5IAAAAJ" target="_blank">Dongwen Tang</a><sup>*</sup>,  </span>
+              <a href="https://scholar.google.com/citations?user=9lKm_5IAAAAJ" target="_blank">Dongwen Tang</a>,  </span>
             <span class="author-block">
               <a href="https://wangbo-zhao.github.io/" target="_blank">Wangbo Zhao</a>,  </span>
             <span class="author-block">
@@ -61,7 +61,7 @@
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://www.nus.edu.sg/" target="_blank">National University of Singapore</a>  </span>
-            <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small>  </span>
+            <span class="eql-cntrb"><small><br>Kai Wang and Dongwen Tang contributed equally to this work.</small>  </span>
           </div>
           <div class="column has-text-centered">
             <div class="publication-links">
@@ -233,7 +233,10 @@
 
         <div class="content has-text-justified">
           <p>
-            coming soon
+            In this work, we propose Recurrent diffusion for large-scale neural network Parameters Generation (RPG). Our
+          approach first divides the trained network parameters into a set of non-overlapping parameter parts (simply called ‘tokens’ in the following). 
+          Subsequently, we use a recurrent model to learn the relationships among the tokens. Finally,
+          the outputs of the recurrent model, as conditions, are fed into a diffusion process to generate the network parameters.
           </p>
         </div>
       </div>
@@ -254,13 +257,15 @@
         <div class="image-container" style="margin-top: 2rem; margin-bottom: 2rem;">
           <img src="figures/compare_training.png" alt="pipeline of rpg" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
           <p class="caption" style="margin-top: 1rem; font-size: 0.9em; color: #666; text-align: center;">
-            <strong>Figure 5:</strong> RPG can generate the complete parameters for ViT-Base and ConvNeXt-L within several minutes, achieving results comparable to the original models. Additionally, our approach can be run on various NVIDIA GPUs.
+            <strong>Figure 5:</strong> RPG can generate the complete parameters for ViT-Base and ConvNeXt-L within minutes, achieving results comparable to the original models. Additionally, our approach can be run on various NVIDIA GPUs.
           </p>
         </div>
 
         <div class="content has-text-justified">
           <p>
-            coming soon
+            The efficiency of generating large-scale parameters is crucial for evaluating the practicality of our approach. In Figure 5, we present the time cost for generating models of ViT-Base
+            and ConvNeXt-L across various DDIM sampling steps. All results are obtained with a single NVIDIA H100 80G GPU. 
+            Our approach enables the generation of models within minutes, achieving performance comparable to that of the original models. Notably, the inference memory requirement is approximately 20GB, so RPG can be deployed on NVIDIA RTX 3090 or similar-level GPUs.
           </p>
         </div>
       </div>
@@ -284,7 +289,7 @@
         <div class="image-container" style="margin-top: 2rem; margin-bottom: 2rem;">
           <img src="figures/unseen.png" alt="pipeline of rpg" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
           <p class="caption" style="margin-top: 1rem; font-size: 0.9em; color: #666; text-align: center;">
-            <strong>Figure 5:</strong> An illustration of our binary embedding strategy and dataset construction. Left: binary embeddings (1022 in total) encode different CIFAR-10 classification tasks, where 1s indicate classes to be classified together (e.g., 'ship' and 'truck' in the first example). 
+            <strong>Figure 6:</strong> An illustration of our binary embedding strategy and dataset construction. Left: binary embeddings (1022 in total) encode different CIFAR-10 classification tasks, where 1s indicate classes to be classified together (e.g., 'ship' and 'truck' in the first example). 
             Right: the dataset consists of parameter-encoding pairs, formed by network parameters with their corresponding binary embeddings. 
             These pairs are split into non-overlapping training and validation sets.
           </p>
@@ -292,7 +297,10 @@
 
         <div class="content has-text-justified">
           <p>
-            coming soon
+            To assess RPG’s capability in generating models for unseen tasks, we construct various binary classification tasks on CIFAR-10 and encode each task as a 10-bit binary embedding,
+            where each bit corresponds to a CIFAR-10 category. Given this encoding strategy, we can create 2^10 possible binary embeddings. After removing the two trivial cases (all
+            0s and all 1s), we obtain 1022 valid embeddings. For each embedding, we collect its corresponding model parameters,
+            forming embedding-parameter pairs. These pairs are then split into non-overlapping sets for training and validation, allowing us to evaluate RPG’s generality on unseen tasks
           </p>
         </div>
       </div>
@@ -313,13 +321,15 @@
         <div class="image-container" style="margin-top: 2rem; margin-bottom: 2rem;">
           <img src="figures/unseen_results.png" alt="pipeline of rpg" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
           <p class="caption" style="margin-top: 1rem; font-size: 0.9em; color: #666; text-align: center;">
-            <strong>Figure 6:</strong> coming soon
+            <strong>Figure 7:</strong> Left: result comparisons between original and generated models on unseen embeddings (tasks). Right: Original and generated models with 3 unseen binary embeddings are
+            compared. 
           </p>
         </div>
 
         <div class="content has-text-justified">
           <p>
-            coming soon
+            We compare the results of our approach and original models on unseen binary embeddings in Figure 7 left.  Notably, RPG yields commendable performance in these unseen tasks, even without being trained on the specific unseen embeddings. That demonstrates the strong practicality
+            and potential of our approach in generating models under unseen tasks. We also visualize the original and generated models for both seen and unseen tasks in in Figure 7 right. Surpassingly, we find that our approach can learn unseen parameter patterns. This demonstrates the potential generalization ability of our method.
           </p>
         </div>
       </div>
@@ -342,13 +352,17 @@
         <div class="image-container" style="margin-top: 2rem; margin-bottom: 2rem;">
           <img src="figures/example.png" alt="pipeline of rpg" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
           <p class="caption" style="margin-top: 1rem; font-size: 0.9em; color: #666; text-align: center;">
-            <strong>Figure 6:</strong> coming soon
+            <strong>Figure 8:</strong> Examples of RPG-generated models guided by binary embeddings from a large language model (Qwen2.5-3B), demonstrating neural network parameter generation conditioned by natural language. 
+            For the first example, we give the LLM a prompt: ”Give me a model to select all living things.” With the binary embedding provided by the LLM, our RPG then generates a ViT-Tiny classifier. After
+            that, We use images in CIFAR-10 to evaluate the model’s accuracy. The model should classify ”bird”, ”cat”, ”deer”, ”dog”, ”frog”, and ”horse” to the positive class, which we used as the ground truth. The result is 97.1%. The second example follows the same process.
           </p>
         </div>
 
         <div class="content has-text-justified">
           <p>
-            coming soon
+            To demonstrate the application scenarios of our model, we utilize large language model to generate binary embeddings to guide RPG
+            in generating corresponding classification models. We provide two example results in Figure 8. This experiment demonstrates our method’s capability to generate neural network
+            parameters based on natural language guidance, highlighting the potential applications of our method.
           </p>
         </div>
       </div>
@@ -378,7 +392,11 @@
 
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>BibTex Code Here</code></pre>
+    <pre><code>   @misc{wang2024RPG,
+      title={Recurrent Diffusion for Large-Scale Parameter Generation},
+      author={Kai Wang and Dongwen Tang and Wangbo Zhao and Yang You},
+      year={2025},
+}</code></pre>
   </div>
 
 </section>
