@@ -33,7 +33,9 @@ cd ./workspace
 CUDA_VISIBLE_DEVICES=0 sh demo.sh
 # CUDA_VISIBLE_DEVICES=<GPU_index> sh demo.sh
 ```
-Here are some examples.
+<details>
+<summary>Here are some examples.</summary>
+
 ```angular2html
 description: "Give me a model to select all living things"
 expected_class: [0,0,1,1,1,1,1,1,0,0]  # bird, cat, deer, dog, frog, horse
@@ -98,4 +100,7 @@ expected_class: [0,0,0,0,0,0,0,0,1,0]  # ship
 description: "Select all animals that are both pets and can climb"
 expected_class: [0,0,0,1,0,1,0,0,0,0]  # cat, dog
 ```
+
+</details>
+
 You can get more information from [Huggingface](https://huggingface.co/MTDoven/Recurrent-Parameter-Generation).
