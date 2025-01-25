@@ -1,6 +1,6 @@
 # Recurrent Diffusion for Large-Scale Parameter Generation
 
-### [Paper](https://arxiv.org/pdf/2501.11587) | [Project Page](https://NUS-HPC-AI-Lab.github.io/Recurrent-Parameter-Generation/) | [Huggingface](https://huggingface.co/MTDoven/Recurrent-Parameter-Generation) | [Twitter](https://x.com/VictorKaiWang1/status/1881380005118419435)
+### [Paper](https://arxiv.org/pdf/2501.11587) | [Project Page](https://NUS-HPC-AI-Lab.github.io/Recurrent-Parameter-Generation/) | [Hugging Face](https://huggingface.co/MTDoven/Recurrent-Parameter-Generation) | [Twitter](https://x.com/VictorKaiWang1/status/1881380005118419435)
 
 ## 🎥 Generating customized models with prompts in just minutes!
 https://github.com/user-attachments/assets/b54dbe8b-5ee7-4273-9e32-f8805d2665ad
@@ -8,7 +8,7 @@ https://github.com/user-attachments/assets/b54dbe8b-5ee7-4273-9e32-f8805d2665ad
 
 
 
-**You can try our demo on [Huggingface](https://huggingface.co/MTDoven/Recurrent-Parameter-Generation).**
+**You can try our demo on [Hugging Face](https://huggingface.co/MTDoven/Recurrent-Parameter-Generation).**
 
 
 ## Abstract
