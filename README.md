@@ -120,7 +120,7 @@ python ./workspace/set_configs.py
 
 2. Prepare checkpoint dataset. (Choose one of two options.)
 ```shell
-# Download our dataset from huggingface. (download about 68 GB)
+# Download our dataset from Hugging Face. (download about 68 GB)
 cd ./dataset/condition_classinput_vittiny
 git lfs install
 git clone https://huggingface.co/datasets/MTDoven/ViTTiny1022
