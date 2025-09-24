@@ -12,22 +12,21 @@ https://github.com/user-attachments/assets/b54dbe8b-5ee7-4273-9e32-f8805d2665ad
 
 
 ## Abstract
-Parameter generation has long struggled to match the scale of today’s large vision and language
-models, curbing its broader utility. In this paper, we introduce **R**ecurrent Diffusion for Large-Scale
-**P**arameter **G**eneration (**RPG**), a novel framework that generates full neural network parameters—up
-to **hundreds of millions**—on a **single GPU**. Our approach first partitions a network’s parameters
-into non-overlapping ‘tokens’, each corresponding to a distinct portion of the model. A recurrent
-mechanism then learns the inter-token relationships, producing ‘prototypes’ which serve as conditions 
-for a diffusion process that ultimately synthesizes the full parameters. Across a spectrum of
-architectures and tasks—including ResNets, ConvNeXts and ViTs on ImageNet-1K and COCO,
-and even LoRA-based LLMs—RPG achieves performance on par with fully trained networks while
-avoiding excessive memory overhead. Notably, it generalizes beyond its training set to generate
-valid parameters for previously unseen tasks, highlighting its flexibility in dynamic and open-ended
+
+Parameter generation has long struggled to match the scale of today's large vision and language 
+models, curbing its broader utility. In this paper, we introduce **R**ecurrent Diffusion for Large-Scale 
+**P**arameter **G**eneration (**RPG**), a novel framework that generates full neural network parameters—up 
+to **hundreds of millions**—on a **single GPU**. Our approach first partitions a network's parameters 
+into non-overlapping 'tokens', each corresponding to a distinct portion of the model. A recurrent 
+mechanism then learns the inter-token relationships, producing 'prototypes' which serve as conditions 
+for a diffusion process that ultimately synthesizes the parameters. Across a spectrum of 
+architectures and tasks—including ResNets, ConvNeXts and ViTs on ImageNet-1K and COCO, 
+and even LoRA-based LLMs—RPG achieves performance on par with fully trained networks while 
+avoiding excessive memory overhead. Notably, it generalizes beyond its training set to generate 
+valid parameters for previously unseen tasks, highlighting its flexibility in open-ended 
 scenarios. By overcoming the longstanding memory and scalability barriers, 
-RPG serves as a critical advance in ‘AI generating AI’, potentially
+RPG serves as a critical advance in 'AI generating AI', potentially 
 enabling efficient weight generation at scales previously deemed infeasible.
-
-
 
 
 
