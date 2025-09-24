@@ -421,8 +421,7 @@ We thank
 [Mingjia Shi](bdemo.github.io/homepage),
 [Zangwei Zheng](https://zhengzangw.github.io/), 
 [Ziheng Qin](https://henryqin1997.github.io/ziheng_qin/),
-[Tianlong Chen](https://tianlong-chen.github.io/), 
-and [Zhangyang Wang](https://www.ece.utexas.edu/people/faculty/atlas-wang)
+and [Tianlong Chen](https://tianlong-chen.github.io/), 
 for valuable discussions and feedbacks. 
 This research is supported by the National Research Foundation, 
 Singapore under its AI Singapore Programme 
