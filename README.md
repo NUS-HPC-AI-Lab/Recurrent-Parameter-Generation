@@ -432,8 +432,8 @@ Singapore under its AI Singapore Programme
 ## Citation
 ```
 @misc{wang2025recurrent,
-      title={Recurrent Diffusion for Large-Scale Parameter Generation},
-      author={Wang, Kai and Tang, Dongwen and Zhao, Wangbo and You, Yang},
+      title={Scaling Up Parameter Generation: A Recurrent Diffusion Approach},
+      author={Wang, Kai and Tang, Dongwen and Zhao, Wangbo and Schürholt, Konstantin and Wang, Zhangyang and You, Yang},
       year={2025},
 }
 ```
