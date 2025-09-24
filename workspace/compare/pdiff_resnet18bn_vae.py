@@ -173,8 +173,7 @@ def train_vae():
             loss = vae(x=param, use_var=False, manual_std=0.01, kld_weight=0.01)
         accelerator.backward(loss)
         vae_optimizer.step()
-        if accelerator.is_main_process:
-            vae_scheduler.step()
+        vae_scheduler.step(batch_idx)
         # to logging losses and print and save
         if USE_WANDB and accelerator.is_main_process:
             wandb.log({"vae_loss": loss.item()})
@@ -207,8 +206,7 @@ def train():
             loss = model(x=mu)
         accelerator.backward(loss)
         optimizer.step()
-        if accelerator.is_main_process:
-            scheduler.step()
+        scheduler.step(batch_idx)
         # to logging losses and print and save
         if USE_WANDB and accelerator.is_main_process:
             wandb.log({"train_loss": loss.item()})

@@ -216,8 +216,7 @@ def train():
             loss = model(output_shape=param.shape, x_0=param, permutation_state=permutation_state)
         accelerator.backward(loss)
         optimizer.step()
-        if accelerator.is_main_process:
-            scheduler.step()
+        scheduler.step(batch_idx)
         # to logging losses and print and save
         if USE_WANDB and accelerator.is_main_process:
             wandb.log({"train_loss": loss.item()})

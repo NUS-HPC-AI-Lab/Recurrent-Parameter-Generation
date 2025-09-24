@@ -166,7 +166,7 @@ def train():
                 permutation_state=None,
             )
         accelerator.backward(loss)
-        optimizer.step()
+        scheduler.step(batch_idx)
         if accelerator.is_main_process:
             scheduler.step()
         # to logging losses and print and save
